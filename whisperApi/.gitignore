@@ -1,0 +1,27 @@
+# Models directory containing downloaded weights
+models/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+.venv/
+env/
+.env
+
+# Testing and coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Temporary files and scratch
+*.tmp
+temp/
+scratch/
+.DS_Store
+
+# Negate root .gitignore rule for config.py
+!app/config.py

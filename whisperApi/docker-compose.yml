@@ -1,0 +1,25 @@
+services:
+  whisper:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: mm-whisper-api:latest
+    container_name: mm-whisper-api
+    restart: unless-stopped
+    ports:
+      - "${PORT:-8000}:${PORT:-8000}"
+    environment:
+      - PORT=${PORT:-8000}
+      - WHISPER_API_KEYS=${WHISPER_API_KEYS:-sk-whisper-local-key}
+      - WHISPER_MODELS=${WHISPER_MODELS:-tiny}
+      - WHISPER_DEFAULT_MODEL=${WHISPER_DEFAULT_MODEL:-tiny}
+      - WHISPER_DEVICE=cpu
+      - WHISPER_COMPUTE_TYPE=int8
+      - WHISPER_MAX_CONCURRENCY=${WHISPER_MAX_CONCURRENCY:-2}
+      - WHISPER_MAX_QUEUE=${WHISPER_MAX_QUEUE:-4}
+      - WHISPER_MAX_UPLOAD_MB=${WHISPER_MAX_UPLOAD_MB:-25}
+      - WHISPER_BEAM_SIZE=${WHISPER_BEAM_SIZE:-5}
+      - WHISPER_VAD=${WHISPER_VAD:-true}
+      - WHISPER_MODELS_DIR=/models
+    volumes:
+      - ./models:/models
